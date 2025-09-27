@@ -660,7 +660,7 @@ class WeekendGrid:
             print(f"Cache write error: {e}")
     
     def grid_strategy(self, weekend_idx, ngrid, threshold, risk_per_trade=RISK_PER_TRADE, mode=MODE, 
-                      total_investment=TOTAL_INVESTMENT, signal_plot=False, debug=False, use_cache=True, montecarlo=False):
+                      total_investment=TOTAL_INVESTMENT, signal_plot=False, debug=False, use_cache=False, montecarlo=False):
         
         threshold = round(threshold, 8)
         
@@ -834,7 +834,7 @@ class WeekendGrid:
     def rolling_optimize(self, optimize_window=104, update_period=13, ngrids=None, thresholds=None, 
                                 metric='R-Sharpe Ratio', rank=1, 
                                 risk_per_trade=RISK_PER_TRADE, mode=MODE,
-                                total_investment=TOTAL_INVESTMENT, debug=False, use_cache=True, montecarlo=False,
+                                total_investment=TOTAL_INVESTMENT, debug=False, use_cache=False, montecarlo=False,
                                 start=None, end=None, multithread=False, multiprocess=False,
                                 result_plot=True, signal_plot=False, verbose=1, **kwargs):
         if ngrids is None:
@@ -1211,7 +1211,7 @@ class WeekendGridV1(WeekendGrid):
                                 metric='R-Sharpe Ratio', rank=1,
                                 feature='atr', target='atr', window=52, filtering='stable', 
                                 risk_per_trade=RISK_PER_TRADE, mode=MODE, 
-                                total_investment=TOTAL_INVESTMENT, debug=False, use_cache=True, montecarlo=False,
+                                total_investment=TOTAL_INVESTMENT, debug=False, use_cache=False, montecarlo=False,
                                 start=None, end=None, 
                                 multithread=False, multiprocess=False, 
                                 result_plot=True, signal_plot=False, verbose=1, **kwargs):
