@@ -540,7 +540,7 @@ class WeekendGrid:
         self.ticker = ticker
         self.interval = interval
         
-        data_path = Path('/Users/chuanwei/Files/Projects/Quant_Trading/data')
+        data_path = Path('data')
         self.data_path = data_path
         self._data = pd.read_csv(data_path / Path(f'klines/binance/{ticker}_{interval}.csv'), parse_dates=['time'])
         self._data['time'] = pd.to_datetime(self._data['time'], utc=True).dt.tz_localize(None)
