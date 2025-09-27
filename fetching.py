@@ -202,21 +202,22 @@ def update_klines(exchange: str, base_coin: str, quote_coin: str, interval: str)
     print('Done!')
     
 def main():
-    update_klines('binance', 'BTC', 'USDT', '1m')
+    # Update the existing klines data to current time
+    # update_klines('binance', 'BTC', 'USDT', '1m')
 
-    # # To run the async function and get the result:
-    # start_dt = datetime(2015, 9, 1, tzinfo=timezone.utc)
-    # end_dt = datetime.now(tz=timezone.utc)
-    # exchange = 'coinbase'
-    # base_coin = 'BTC'
-    # quote_coin = 'USD'
-    # interval = '1h'
-    # symbol = f'{base_coin}{quote_coin}'
-    # df = asyncio.run(fetch_exchange_klines(exchange, base_coin, quote_coin, interval, start=start_dt, end=end_dt))
-    # file_path = Path(f'data/klines/{exchange}')
-    # file_path.mkdir(parents=True, exist_ok=True)
-    # file_name = f'{symbol}_{interval}.csv'
-    # df.to_csv(file_path / file_name, index=False)
+    # To fetch klines data:
+    start_dt = datetime(2018, 1, 1, tzinfo=timezone.utc)
+    end_dt = datetime.now(tz=timezone.utc)
+    exchange = 'binance'
+    base_coin = 'BTC'
+    quote_coin = 'USDT'
+    interval = '1m'
+    symbol = f'{base_coin}{quote_coin}'
+    df = asyncio.run(fetch_exchange_klines(exchange, base_coin, quote_coin, interval, start=start_dt, end=end_dt))
+    file_path = Path(f'data/klines/{exchange}')
+    file_path.mkdir(parents=True, exist_ok=True)
+    file_name = f'{symbol}_{interval}.csv'
+    df.to_csv(file_path / file_name, index=False)
     
 
 if __name__ == '__main__':
